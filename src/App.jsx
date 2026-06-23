@@ -320,7 +320,7 @@ export default function App() {
       setCompaniesLoading(true);
       setError("");
       try {
-        const data = await fetchJson("/companies/");
+        const data = await fetchJson("/companies");
         setCompanies(data);
         if (data.length > 0) setSelectedCompany(data[0].company_name);
       } catch (requestError) {
