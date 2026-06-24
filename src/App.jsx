@@ -52,7 +52,7 @@ function CompanyControlPanel({ companies, selectedCompany, onCompanyChange, load
 
   return (
     <section className="border-b border-slate-200 bg-white">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <div>
           <h1 className="text-3xl font-extrabold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">LeetSight</h1>
           <p className="mt-1 text-sm text-slate-500">Company signals, pattern frequency, and prep sequencing</p>
@@ -113,8 +113,8 @@ function PatternChart({ patterns, loading, selectedCompany }) {
                       </span>
                       <span className="truncate font-medium text-slate-900">{pattern.pattern_name}</span>
                     </div>
-                    <div className="shrink-0 text-right text-xs text-slate-500">
-                      <span className="font-semibold text-slate-800">{formatNumber(pattern.total_frequency)}</span>
+                    <div className="shrink-0 text-right text-sm text-slate-700">
+                      <span className="font-semibold text-slate-900">{formatNumber(pattern.total_frequency)}</span>
                       <span className="ml-1">freq</span>
                     </div>
                   </div>
@@ -240,7 +240,7 @@ function ProblemTable({ roadmap }) {
       <div className="overflow-hidden rounded-lg border border-slate-200">
         <div className="max-h-[640px] overflow-auto">
           <table className="min-w-full divide-y divide-slate-200 text-sm">
-            <thead className="sticky top-0 bg-slate-50 text-left text-xs font-semibold uppercase tracking-normal text-slate-500">
+            <thead className="sticky top-0 bg-slate-100 text-left text-xs font-semibold uppercase tracking-widest text-slate-600">
               <tr>
                 <th className="w-16 px-4 py-3">Rank</th>
                 <th className="min-w-[18rem] px-4 py-3">Problem</th>
