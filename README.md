@@ -4,7 +4,7 @@ LeetSight is a data-driven interview intelligence platform that transforms thous
 
 ## 🚀 Live Demo
 
-🌐 https://leetsight-delta.vercel.app
+🌐 https://leetsight-app.vercel.app
 
 ---
 
