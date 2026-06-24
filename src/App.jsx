@@ -44,7 +44,7 @@ function CompanyControlPanel({ companies, selectedCompany, onCompanyChange, load
     <section className="border-b border-slate-200 bg-white">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
         <div>
-          <h1 className="text-2xl font-semibold tracking-normal text-slate-950">DSA Pattern Miner</h1>
+          <h1 className="text-2xl font-semibold tracking-normal text-slate-950">LeetSight</h1>
           <p className="mt-1 text-sm text-slate-500">Company signals, pattern frequency, and prep sequencing</p>
         </div>
 
