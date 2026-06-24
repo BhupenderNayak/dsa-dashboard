@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import Select from 'react-select';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "https://dsa-miner-api.onrender.com";
 
@@ -40,29 +41,34 @@ function LoadingBar() {
 }
 
 function CompanyControlPanel({ companies, selectedCompany, onCompanyChange, loading }) {
+  const companyOptions = companies.map(company => ({
+    value: company.company_name,
+    label: company.company_name
+  }));
+
+  const selectedOption = selectedCompany
+    ? companyOptions.find(opt => opt.value === selectedCompany) || null
+    : null;
+
   return (
     <section className="border-b border-slate-200 bg-white">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
         <div>
-          <h1 className="text-2xl font-semibold tracking-normal text-slate-950">LeetSight</h1>
+          <h1 className="text-3xl font-extrabold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">LeetSight</h1>
           <p className="mt-1 text-sm text-slate-500">Company signals, pattern frequency, and prep sequencing</p>
         </div>
 
         <label className="flex w-full flex-col gap-1.5 lg:w-80">
           <span className="text-sm font-medium text-slate-700">Company</span>
-          <select
-            value={selectedCompany}
-            onChange={(event) => onCompanyChange(event.target.value)}
-            disabled={loading || companies.length === 0}
-            className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm font-medium text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100 disabled:cursor-not-allowed disabled:bg-slate-100"
-          >
-            <option value="">Select company</option>
-            {companies.map((company) => (
-              <option key={company.company_id} value={company.company_name}>
-                {company.company_name}
-              </option>
-            ))}
-          </select>
+          <Select
+            options={companyOptions}
+            value={selectedOption}
+            onChange={(option) => onCompanyChange(option?.value || "")}
+            placeholder="🔍 Search companies..."
+            isDisabled={loading || companies.length === 0}
+            className="text-slate-900"
+            classNamePrefix="react-select"
+          />
         </label>
       </div>
     </section>
@@ -76,7 +82,7 @@ function PatternChart({ patterns, loading, selectedCompany }) {
   );
 
   return (
-    <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <section className="bg-white rounded-xl shadow-lg border border-slate-200 p-6">
       <div className="flex items-center justify-between gap-3">
         <div>
           <h2 className="text-lg font-semibold text-slate-950">Top Patterns</h2>
@@ -159,7 +165,7 @@ function RoadmapGenerator({ selectedCompany }) {
   }
 
   return (
-    <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <section className="bg-white rounded-xl shadow-lg border border-slate-200 p-6">
       <div className="flex flex-col gap-4 border-b border-slate-200 pb-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <h2 className="text-lg font-semibold text-slate-950">Roadmap Generator</h2>
@@ -194,7 +200,7 @@ function RoadmapGenerator({ selectedCompany }) {
           <button
             type="submit"
             disabled={!selectedCompany || loading}
-            className="h-10 self-end rounded-md bg-slate-950 px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
+            className="h-10 self-end rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 shadow-md transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-slate-300"
           >
             {loading ? "Generating" : "Generate"}
           </button>
@@ -358,7 +364,7 @@ export default function App() {
   }, [selectedCompany]);
 
   return (
-    <main className="min-h-screen bg-slate-100 text-slate-950">
+    <main className="min-h-screen bg-slate-50 text-slate-900">
       <CompanyControlPanel
         companies={companies}
         selectedCompany={selectedCompany}
