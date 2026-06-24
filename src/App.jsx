@@ -35,7 +35,7 @@ async function fetchJson(path) {
 function LoadingBar() {
   return (
     <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
-      <div className="h-full w-1/3 animate-pulse rounded-full bg-sky-500" />
+      <div className="h-full w-1/3 animate-pulse rounded-full bg-violet-500" />
     </div>
   );
 }
@@ -119,7 +119,7 @@ function PatternChart({ patterns, loading, selectedCompany }) {
                     </div>
                   </div>
                   <div className="h-3 overflow-hidden rounded-full bg-slate-100">
-                    <div className="h-full rounded-full bg-sky-500" style={{ width }} />
+                    <div className="h-full rounded-full bg-violet-500" style={{ width }} />
                   </div>
                   <div className="text-xs text-slate-500">
                     {pattern.problem_count} problems, avg {formatNumber(pattern.avg_frequency)}
@@ -261,7 +261,7 @@ function ProblemTable({ roadmap }) {
                         href={problem.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="font-medium text-sky-700 hover:text-sky-900"
+                        className="font-medium text-violet-600 hover:text-violet-700"
                       >
                         {problem.title}
                       </a>
